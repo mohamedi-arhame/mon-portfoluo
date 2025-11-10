@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="fr" data-theme="">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Portfolio – Arhame MOHAMEDI</title>
+	<meta name="description" content="Portfolio d'Arhame Mohamedi — BTS SIO SLAM.">
+	<style>
+		/* Thèmes via variables CSS */
+		:root{
+			--bg:#0b1020; --bg2:#090f1a; --panel:#111827; --text:#e5e7eb; --muted:#9ca3af;
+			--line:#1f2937; --brand:#22c55e; --brand-700:#15803d; --chip:#0b1321; --chip-text:#dbeafe;
+		}
+		:root[data-theme="light"]{
+			--bg:#f6f7fb; --bg2:#ffffff; --panel:#ffffff; --text:#0f172a; --muted:#475569;
+			--line:#e5e7eb; --brand:#16a34a; --brand-700:#15803d; --chip:#eef2ff; --chip-text:#1e293b;
+		}
+		/* Respect du thème système par défaut si aucun choix enregistré */
+		@media (prefers-color-scheme: light){
+			:root:not([data-theme="dark"]):not([data-theme="light"]){
+				--bg:#f6f7fb; --bg2:#ffffff; --panel:#ffffff; --text:#0f172a; --muted:#475569;
+				--line:#e5e7eb; --brand:#16a34a; --brand-700:#15803d; --chip:#eef2ff; --chip-text:#1e293b;
+			}
+		}
+
+		*{box-sizing:border-box}
+		html,body{margin:0;padding:0}
+		body{
+			background:linear-gradient(180deg,var(--bg),var(--bg2) 60%,var(--bg));
+			color:var(--text);
+			font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;
+		}
+		.container{width:min(980px,92%);margin-inline:auto}
+
+		/* Header + toggle */
+		header{
+			display:flex;align-items:center;justify-content:space-between;
+			padding:14px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg2);z-index:10;
+		}
+		.brand{font-weight:800;letter-spacing:.5px}
+		nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+		nav a:hover{color:var(--text)}
+		.theme-toggle{
+			display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);
+			background:var(--panel);color:var(--text);padding:6px 10px;border-radius:10px;cursor:pointer;
+		}
+		.theme-toggle .icon{font-size:16px;line-height:1}
+		.theme-toggle:focus-visible{outline:3px solid color-mix(in oklab, var(--brand) 40%, transparent)}
+
+		.hero{display:grid;gap:18px;grid-template-columns:1.1fr .9fr;align-items:center;padding:28px 0}
+		.hero h1{margin:0 0 6px;font-size:34px}
+		.lead{color:var(--muted);margin:0 0 10px}
+		.badge{display:inline-block;background:var(--chip);color:var(--chip-text);border:1px solid var(--line);
+			padding:6px 10px;border-radius:999px;font-size:13px;margin-right:8px}
+		.btn{display:inline-block;background:var(--brand);color:#04130a;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;margin-right:8px}
+		.btn:hover{background:var(--brand-700);color:#eafff1}
+		.btn.ghost{background:transparent;color:inherit;border:1px solid var(--line)}
+		.hero img{width:100%;max-width:300px;border-radius:12px;border:1px solid var(--line);display:block;margin-left:auto}
+
+		.section{padding:18px 0 6px}
+		.section h2{margin:0 0 10px;font-size:24px}
+		.cards{display:grid;gap:12px}
+		.two{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+		.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
+		ul.list{margin:0;padding-left:18px}
+		.tags{display:flex;gap:8px;flex-wrap:wrap;list-style:none;margin:8px 0 0;padding:0}
+		.tags li{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--chip-text)}
+		label{display:grid;gap:6px;color:var(--muted);margin-bottom:8px}
+		input,textarea{background:color-mix(in oklab, var(--panel) 90%, var(--bg));color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 12px;outline:none}
+		input:focus,textarea:focus{border-color:color-mix(in oklab, var(--brand) 50%, var(--line));box-shadow:0 0 0 3px color-mix(in oklab, var(--brand) 30%, transparent)}
+		footer{padding:20px 0 32px;color:var(--muted);border-top:1px solid var(--line);margin-top:24px;text-align:center}
+
+		@media (max-width:860px){
+			.hero{grid-template-columns:1fr}
+			.hero img{margin:0 auto}
+		}
+	</style>
+</head>
+<body>
+	<header class="container">
+		<div class="brand">AM</div>
+		<div style="display:flex;align-items:center;gap:10px">
+			<button id="themeToggle" class="theme-toggle" type="button" aria-live="polite" aria-label="Basculer le thème">
+				<span class="icon" id="themeIcon">🌙</span>
+				<span id="themeLabel">Sombre</span>
+			</button>
+			<nav aria-label="Navigation principale">
+				<a href="#accueil">Accueil</a>
+				<a href="#presentation">Présentation</a>
+				<a href="#competences">Compétences</a>
+				<a href="#projets">Projets</a>
+				<a href="#stages">Stages</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<section id="accueil" class="hero container">
+			<div>
+				<h1>Portfolio – Arhame MOHAMEDI</h1>
+				<p class="lead">👋 Bienvenue sur mon portfolio !</p>
+				<p>Étudiant en <strong>BTS SIO</strong> option <strong>SLAM</strong> au <strong>lycée Younoussa BAMANA</strong>.</p>
+				<p>Découvrez mes <strong>compétences</strong>, <strong>projets</strong> et <strong>expériences</strong>.</p>
+				<p class="badge">🎯 Développeur web / full‑stack / analyste programmeur</p>
+				<p>
+					<a class="btn" href="#projets">Voir mes projets</a>
+					<a class="btn ghost" href="#contact">Me contacter</a>
+				</p>
+			</div>
+			<div>
+				<img src="photo.jpg" alt="Photo de Arhame Mohamedi" onerror="this.style.display='none'">
+			</div>
+		</section>
+
+		<section id="presentation" class="container section">
+			<h2>👨‍🎓 Présentation</h2>
+			<div class="cards two">
+				<article class="card">
+					<h3>🎓 Formation</h3>
+					<ul class="list">
+						<li>BTS SIO option SLAM – lycée Younoussa BAMANA</li>
+						<li>Années : 2024 – 2026</li>
+					</ul>
+					<p><a class="btn ghost" href="cv.pdf" target="_blank" rel="noopener">📄 Voir mon CV</a></p>
+				</article>
+				<article class="card">
+					<h3>💡 À propos de moi</h3>
+					<p>Passionné par le développement, j’aime concevoir des applications utiles et ergonomiques, côté front‑end et back‑end.</p>
+					<p><strong>Qualités</strong> : Autonome • Curieux • Rigoureux • Esprit d’équipe • Persévérant</p>
+				</article>
+			</div>
+		</section>
+
+		<section id="competences" class="container section">
+			<h2>💻 Compétences</h2>
+			<div class="cards two">
+				<article class="card">
+					<h3>Langages</h3>
+					<ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>PHP</li><li>SQL</li><li>Python</li><li>Java</li></ul>
+				</article>
+				<article class="card">
+					<h3>Outils & frameworks</h3>
+					<ul class="tags"><li>VS Code</li><li>Git</li><li>GitHub</li><li>Bootstrap</li><li>Laravel</li><li>Symfony</li><li>MySQL</li><li>phpMyAdmin</li><li>Docker</li></ul>
+				</article>
+				<article class="card">
+					<h3>Méthodes</h3>
+					<ul class="tags"><li>UML</li><li>Modélisation BDD</li><li>Agile / Scrum</li><li>POO</li></ul>
+				</article>
+			</div>
+		</section>
+
+		<section id="projets" class="container section">
+			<h2>🧩 Projets</h2>
+			<div class="cards two">
+				<article class="card">
+					<h3>📁 Gestion de bibliothèque (SAE 2.1)</h3>
+					<ul class="list">
+						<li>Objectif : Gérer livres, adhérents, prêts</li>
+						<li>Technos : PHP, MySQL, Bootstrap</li>
+						<li>Rôle : Back‑end + BDD</li>
+						<li>Résultat : Auth, gestion des emprunts, interface simple</li>
+					</ul>
+					<p>
+						<a class="btn ghost" href="#" target="_blank">🔗 GitHub</a>
+						<a class="btn" href="#" target="_blank">📸 Captures</a>
+					</p>
+				</article>
+				<article class="card">
+					<h3>📁 Gestion de tickets (SAE 2.2)</h3>
+					<ul class="list">
+						<li>Objectif : Déclarer et suivre des incidents</li>
+						<li>Technos : PHP, JavaScript, MySQL</li>
+						<li>Rôle : Full‑stack</li>
+						<li>Compétences : Dév, incidents, UML</li>
+					</ul>
+					<p>
+						<a class="btn ghost" href="#" target="_blank">🔗 GitHub</a>
+						<a class="btn" href="#" target="_blank">📸 Captures</a>
+					</p>
+				</article>
+			</div>
+		</section>
+
+		<section id="stages" class="container section">
+			<h2>🏢 Stages</h2>
+			<div class="cards two">
+				<article class="card">
+					<h3>Stage 1 — <em>Nom de l’entreprise</em></h3>
+					<ul class="list">
+						<li>📅 Période : du <em>date</em> au <em>date</em></li>
+						<li>📍 Lieu : <em>Ville</em></li>
+						<li>Mission : Outil interne gestion clients</li>
+						<li>Technologies : PHP, MySQL, JavaScript</li>
+					</ul>
+				</article>
+				<article class="card">
+					<h3>Stage 2 — <em>Nom de l’entreprise</em></h3>
+					<ul class="list">
+						<li>📅 Période : du <em>date</em> au <em>date</em></li>
+						<li>📍 Lieu : <em>Ville</em></li>
+						<li>Mission : API pour service interne</li>
+						<li>Technologies : Laravel, MySQL, Git</li>
+					</ul>
+				</article>
+			</div>
+		</section>
+
+		<section id="contact" class="container section">
+			<h2>📬 Contact</h2>
+			<div class="cards two">
+				<article class="card">
+					<h3>Coordonnées</h3>
+					<ul class="list">
+						<li>📧 Email : <a href="mailto:mohamediarhame@gmail.com">mohamediarhame@gmail.com</a></li>
+						<li>🔗 LinkedIn : <a href="#" target="_blank">Ton profil LinkedIn</a></li>
+						<li>🧑‍💻 GitHub : <a href="#" target="_blank">Ton profil GitHub</a></li>
+						<li>📄 CV : <a href="cv.pdf" target="_blank" rel="noopener">Lien vers le CV PDF</a></li>
+					</ul>
+				</article>
+				<article class="card">
+					<h3>M’écrire</h3>
+					<form id="contact-form">
+						<label>Nom <input type="text" name="name" required></label>
+						<label>Email <input type="email" name="email" required></label>
+						<label>Message <textarea name="message" rows="4" required></textarea></label>
+						<button type="submit" class="btn">Envoyer</button>
+						<p class="muted" style="margin:6px 0 0;font-size:13px">Simulation locale. Je peux brancher EmailJS si tu veux.</p>
+					</form>
+				</article>
+			</div>
+		</section>
+	</main>
+
+	<footer class="container">
+		<small>© <span id="year"></span> Arhame Mohamedi</small>
+	</footer>
+
+	<script>
+		// Préférence thème: lecture au chargement
+		const root = document.documentElement;
+		const savedTheme = localStorage.getItem('theme'); // 'light' | 'dark' | null
+		if (savedTheme === 'light' || savedTheme === 'dark') {
+			root.setAttribute('data-theme', savedTheme);
+		}
+		// MàJ UI bouton
+		const btn = document.getElementById('themeToggle');
+		const icon = document.getElementById('themeIcon');
+		const label = document.getElementById('themeLabel');
+		function applyButtonUI(theme){
+			if (theme === 'light'){
+				icon.textContent = '🌞';
+				label.textContent = 'Clair';
+			}else{
+				icon.textContent = '🌙';
+				label.textContent = 'Sombre';
+			}
+			btn.setAttribute('aria-label', 'Basculer en thème ' + (theme === 'light' ? 'sombre' : 'clair'));
+		}
+		function currentTheme(){
+			// data-theme explicite sinon déduire du media query
+			const attr = root.getAttribute('data-theme');
+			if (attr === 'light' || attr === 'dark') return attr;
+			return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+		}
+		applyButtonUI(currentTheme());
+
+		// Toggle et persistance
+		btn.addEventListener('click', () => {
+			const next = currentTheme() === 'light' ? 'dark' : 'light';
+			root.setAttribute('data-theme', next);
+			localStorage.setItem('theme', next);
+			applyButtonUI(next);
+		});
+
+		// Année footer
+		document.getElementById('year').textContent = new Date().getFullYear();
+
+		// Formulaire (simulation)
+		const form = document.getElementById('contact-form');
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const data = Object.fromEntries(new FormData(form).entries());
+			console.log('Message reçu :', data);
+			alert('Merci pour ton message !');
+			form.reset();
+		});
+	</script>
+</body>
+</html>
